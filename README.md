@@ -18,4 +18,20 @@ para o uso é necessário:
  - keycloack
  
 ## Servidor de Authenticação Keycloak
-Serviço de authenticação para aplicaçõe em ambiente de teste temos um servidor instalado com o devcontainer e um postgres para gerenciar o serviço
+Serviço de authenticação para aplicaçõe em ambiente de teste temos um servidor  
+instalado com o devcontainer e um postgres para gerenciar o serviço
+
+## Configurações a parte.
+algumas dicas de configurações interresantes para facilitar o uso
+
+- Criando super user no django sem shell interativo via cli.
+```bash
+# Execute esses comandos em projeto django criado!
+# Verifica se há altereções nas models do projeto
+python manage.py makemigrations
+# Aplica as migrações 
+python manage.py migrate
+# Cria super usuario django 
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python ./manage.py shell
+```
+cria super usuario na base 
