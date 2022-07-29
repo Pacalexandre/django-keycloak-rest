@@ -15,12 +15,12 @@ class ProdutoSerializer(ModelSerializer):
 
     class Meta:
         model = Produto
-        fields = ['codigo', 'nome', 'categoria', 'preco']
+        fields = '__all__'
         depth = 1
 
 
 class ProdutoListSerializer(ModelSerializer):
-    categoria = CategoriaSerializer()
+    categoria = CategoriaSerializer(many=True, read_only=True)
 
     class Meta:
         model = Produto
