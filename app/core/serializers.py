@@ -9,19 +9,21 @@ class CategoriaSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class NotaFiscalSerializer(ModelSerializer):
-    produto = PrimaryKeyRelatedField(many=True)
-
-    class Meta:
-        model = NotaFiscal
-        fields = ['numero', 'produto', 'qnt']
-        depth = 1
-
-
 class ProdutoSerializer(ModelSerializer):
-    categoria = PrimaryKeyRelatedField(many=True)
+    categoria = PrimaryKeyRelatedField(
+        queryset=Categoria.objects.all(), many=False)
 
     class Meta:
         model = Produto
         fields = ['codigo', 'nome', 'categoria', 'preco']
+        depth = 1
+
+
+class NotaFiscalSerializer(ModelSerializer):
+    produto = PrimaryKeyRelatedField(
+        queryset=Produto.objects.all(), many=False)
+
+    class Meta:
+        model = NotaFiscal
+        fields = ['numero', 'produto', 'qnt']
         depth = 1
