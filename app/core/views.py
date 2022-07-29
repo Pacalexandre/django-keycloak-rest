@@ -1,7 +1,7 @@
 """Views"""
 from rest_framework.viewsets import ModelViewSet
-
-from .serializers import CategoriaSerializer, NotaFiscalSerializer, ProdutoSerializer
+from rest_framework.response import Response
+from .serializers import CategoriaSerializer, NotaFiscalSerializer, ProdutoListSerializer, ProdutoSerializer
 from .models import Produto, Categoria, NotaFiscal
 
 

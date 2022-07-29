@@ -19,6 +19,15 @@ class ProdutoSerializer(ModelSerializer):
         depth = 1
 
 
+class ProdutoListSerializer(ModelSerializer):
+    categoria = CategoriaSerializer()
+
+    class Meta:
+        model = Produto
+        fields = ['codigo', 'nome', 'categoria', 'preco']
+        depth = 1
+
+
 class NotaFiscalSerializer(ModelSerializer):
     produto = PrimaryKeyRelatedField(
         queryset=Produto.objects.all(), many=False)
