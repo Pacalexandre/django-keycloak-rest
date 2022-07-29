@@ -32,7 +32,11 @@ usuario criado na instalação do dev container keycloak
  - Definido um API restfull (modelagem , relacionamentos)
  - Testes 
 
- libs interesantes:
+ libs instaladas:
+    - django
+    - djangorestframework
+    - pylint-django
+    
     - requests
     - jsonpath **navegar dentro json**
     - pytest
