@@ -15,11 +15,27 @@ para o uso é necessário:
 
  - django 
  - djangorestframework
- - keycloack
  
 ## Servidor de Authenticação Keycloak
 Serviço de authenticação para aplicaçõe em ambiente de teste temos um servidor  
 instalado com o devcontainer e um postgres para gerenciar o serviço
+
+ - Container de instalado um keycloak server para os testes
+ - Postgres que acompanha o servidor de autenticação
+
+usuario criado na instalação do dev container keycloak
+- admin
+- Pa55w0rd 
+
+## Configurações do projeto
+
+ - Definido um API restfull (modelagem , relacionamentos)
+ - Testes 
+
+ libs interesantes:
+    - requests
+    - jsonpath **navegar dentro json**
+    - pytest
 
 ## Configurações a parte.
 algumas dicas de configurações interresantes para facilitar o uso
@@ -34,3 +50,26 @@ python manage.py migrate
 # Cria super usuario django 
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python ./manage.py shell
 ```
+Dependencias de desenvolvimento  
+```bash
+# essa biblioteca de lint vai resolver as dependencias dentro do vscode (desenvolvimento)
+pip install pylint-django
+```
+Depois de instalar essa dependencia de desenvolvimento, vá no vscode e inclua essa configuração no settings
+arquivo > preferencias > configurações
+Icone no canto superior direito edit o arquivo 
+![](app/static/vscode-settings.png)
+```json
+"python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+],
+```
+reinicie o vscode !
+
+# Bibliografia
+
+- https://docs.djangoproject.com/en/4.0/
+- https://www.django-rest-framework.org/
+- https://www.keycloak.org/documentation
+- https://cursos.alura.com.br/forum/topico-class-aluno-has-no-objects-member-126928
+
