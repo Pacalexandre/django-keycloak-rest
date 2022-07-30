@@ -1,15 +1,17 @@
 """Views"""
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.mixins import ListModelMixin, CreateModelMixin,UpdateModelMixin
 from .serializers import CategoriaSerializer, NotaFiscalSerializer, ProdutoCreateSerializer, ProdutoSerializer
 from .models import Produto, Categoria, NotaFiscal
 
 
-class ViewProduto(ModelViewSet):
+class ViewProduto(ListModelMixin, CreateModelMixin, UpdateModelMixin, GenericViewSet):
     queryset = Produto.objects.all()
-    serializer_class = ProdutoSerializer
     def get_serializer_class(self):
-        if self.action == ('create','update'):
+        if self.action in ('create','update'):
             return ProdutoCreateSerializer
+        if self.action in ('list','retrieve'):
+            return ProdutoSerializer
 
 
 class ViewCategoria(ModelViewSet):
