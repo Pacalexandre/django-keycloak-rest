@@ -1,12 +1,15 @@
 """Views"""
 from rest_framework.viewsets import ModelViewSet
-from .serializers import CategoriaSerializer, NotaFiscalSerializer, ProdutoSerializer
+from .serializers import CategoriaSerializer, NotaFiscalSerializer, ProdutoCreateSerializer, ProdutoSerializer
 from .models import Produto, Categoria, NotaFiscal
 
 
 class ViewProduto(ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
+    def get_serializer_class(self):
+        if self.action == ('create','update'):
+            return ProdutoCreateSerializer
 
 
 class ViewCategoria(ModelViewSet):

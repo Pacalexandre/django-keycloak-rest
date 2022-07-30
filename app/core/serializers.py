@@ -10,18 +10,15 @@ class CategoriaSerializer(ModelSerializer):
 
 
 class ProdutoSerializer(ModelSerializer):
-    categoria = PrimaryKeyRelatedField(
-        queryset=Categoria.objects.all(), many=False)
-
+    categoria = CategoriaSerializer(many=False)
     class Meta:
         model = Produto
         fields = '__all__'
         depth = 1
 
 
-class ProdutoListSerializer(ModelSerializer):
-    categoria = CategoriaSerializer(many=True, read_only=True)
-
+class ProdutoCreateSerializer(ModelSerializer):
+    categoria = PrimaryKeyRelatedField(queryset = Categoria.objects.all(),many=False)
     class Meta:
         model = Produto
         fields = ['codigo', 'nome', 'categoria', 'preco']
