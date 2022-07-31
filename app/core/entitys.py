@@ -1,15 +1,15 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 from unicodedata import decimal
 
 @dataclass
 class CategoriaEntity:
-    id: Optional[int]
+    id: Optional[int] = None
     nome: Optional[str] = None
 
 @dataclass
 class ProdutoEntity:
-    id: Optional[int]
+    id: Optional[int] = None
     codigo: Optional[int] = None
     nome: str = None
     categoria: Optional[CategoriaEntity] = None
@@ -17,9 +17,9 @@ class ProdutoEntity:
 
 @dataclass
 class NotafiscalEntity:
-    id: Optional[int]
+    id: Optional[int] = None
     numero: Optional[int] = None
-    produto: ProdutoEntity = None
+    produto: Optional[ProdutoEntity] = None
     qnt: Optional[float] = None
 
 @dataclass

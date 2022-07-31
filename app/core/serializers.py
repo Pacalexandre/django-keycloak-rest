@@ -1,6 +1,8 @@
 """Serializers"""
 from rest_framework.serializers import ModelSerializer, PrimaryKeyRelatedField
+from .services import MontaCalculoImposto
 from .models import Categoria, NotaFiscal, Produto
+
 
 
 class CategoriaSerializer(ModelSerializer):
@@ -21,7 +23,7 @@ class ProdutoCreateSerializer(ModelSerializer):
     categoria = PrimaryKeyRelatedField(queryset = Categoria.objects.all(),many=False)
     class Meta:
         model = Produto
-        fields = ['codigo', 'nome', 'categoria', 'preco']
+        fields = '__all__'
         depth = 1
 
 
@@ -31,5 +33,10 @@ class NotaFiscalSerializer(ModelSerializer):
 
     class Meta:
         model = NotaFiscal
-        fields = ['numero', 'produto', 'qnt']
+        fields = '__all__'
         depth = 1
+
+    def create(self, validated_data):
+        data=validated_data.copy()
+        MontaCalculoImposto().carrega_dados(data)
+        return super().create(validated_data)
