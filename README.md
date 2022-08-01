@@ -41,6 +41,24 @@ usuario criado na instalação do dev container keycloak
     - jsonpath **navegar dentro json**
     - pytest
 
+## Servidor de Email Test mailhog
+Servidor de teste de emails
+- host: mailhog
+- port: 1025 smtp
+- 8025: pagina web
+
+
+## Configuração Basica Keycloak standalone
+Agora vamos para instalação é preciso configuração minima para o bom funcionamento do keycloak.  
+- localhost:8080
+- admin
+- Pa55w0rd 
+- criar um novo helm  / public / oauth2
+- definir rota http://localhost:8080/* de redirects e web origin
+- standalone
+- direct access grants enable
+
+
 ## Configurações a parte.
 algumas dicas de configurações interresantes para facilitar o uso
 
