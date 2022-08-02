@@ -39,7 +39,7 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
-	"forwardPorts": [8080, 5432, 8000],
+	//"forwardPorts": [8080, 5432, 8000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip install -r app/requirements.txt && python app/manage.py migrate",
