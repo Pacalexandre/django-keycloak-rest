@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = hashlib.sha256( str( uuid4 ).encode("utf-8") ).hexdigest()
+SECRET_KEY = hashlib.sha256(str(uuid4).encode("utf-8")).hexdigest()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_authenticator_keycloak.middleware.Authentication',
+    # 'django_authenticator_keycloak.middleware.Authentication',
 ]
 
 ROOT_URLCONF = 'django_authenticator_keycloak.urls'
@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Default Configurations access server keycloak
-# https://www.keycloak.org/docs/latest/authorization_services 
+# https://www.keycloak.org/docs/latest/authorization_services
 KEYCLOAK_CONFIG = {
     'KEYCLOAK_SERVER_URL': 'http://localhost:8080/auth',
     'KEYCLOAK_REALM': 'REALM',
