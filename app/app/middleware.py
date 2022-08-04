@@ -1,4 +1,6 @@
 "Middleware Autenticated"
+from jwt import decode
+
 
 class DjangoMiddlewareKeycloakException(Exception):
     pass
@@ -12,7 +14,7 @@ class DjangoMiddlewareKeycloakOauth2:
         self.get_response = get_response
         self.session = {}
 
-    def __call__(self,request):
+    def __call__(self, request):
 
         header = request.headers
         authorization = header.get('Authorization')
@@ -21,11 +23,18 @@ class DjangoMiddlewareKeycloakOauth2:
         if 'Bearer' in authorization:
             token = authorization.split(' ')[1]
 
-        print(token)
+        decoded = decode(token, options={"verify_signature": False})
+
+        print(decoded)
 
         response = self.get_response(request)
 
         print('after response')
 
         return response
-    
+
+        # encoded = jwt.encode({"some": "payload"}, "secret", algorithm="HS256")
+        # print(encoded)
+        # eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21lIjoicGF5bG9hZCJ9.Joh1R2dYzkRvDkqv3sygm5YyK8Gi4ShZqbhK2gxcs2U
+
+        #decode(self.bearer_token, options={"verify_signature": False})

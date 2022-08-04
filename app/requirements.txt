@@ -1,5 +1,6 @@
 Django
 djangorestframework
 pylint-django
-dacite
-oic
+# dacite
+# oic
+pyjwt
