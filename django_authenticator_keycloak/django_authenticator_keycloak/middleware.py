@@ -1,23 +1,23 @@
-from .keycloak import KeycloakAuthorization
+from .keycloak import connect # KeycloakAuthorization
 
 
-class AuthenticationMiddleware:
+class Authentication:
     
     def __init__(self, get_response) -> None:
-        self.instance = KeycloakAuthorization().connect()
+        self.get_response = get_response
 
     def __call__(self, request):
-
         header = request.headers
         authorization = header.get('Authorization')
         if authorization is None:
             return
         if 'Bearer' in authorization:
             token = authorization.split(' ')[1]
+            self.instance = connect()
 
-        decoded = decode(token, options={"verify_signature": False})
+        # decoded = decode(token, options={"verify_signature": False})
 
-        print(decoded)
+        print(token)
 
         response = self.get_response(request)
 

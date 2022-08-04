@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_authenticator_keycloak.middleware.AuthenticationKeycloak',
+    'django_authenticator_keycloak.middleware.Authentication',
 ]
 
 ROOT_URLCONF = 'django_authenticator_keycloak.urls'
