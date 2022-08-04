@@ -2,4 +2,4 @@ django
 djangorestframework
 requests
 oic
-
+pylint-django

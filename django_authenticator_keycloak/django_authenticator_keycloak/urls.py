@@ -17,3 +17,5 @@ Including another URLconf
 from banks.urls import router
 
 urlpatterns = router.urls
+
+handler404 = 'banks.views.exception_view'
