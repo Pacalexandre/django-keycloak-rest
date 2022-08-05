@@ -9,15 +9,12 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
 import hashlib
-from pickle import FALSE
 from uuid import uuid4
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -130,10 +127,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://www.django-rest-framework.org/api-guide/renderers/#renderers
 # https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling
 REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'django_authenticator_keycloak.exception_handler.custom_exception_handler',
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
-    'EXCEPTION_HANDLER': 'django_authenticator_keycloak.utils.custom_exception_handler'
 }
 
 

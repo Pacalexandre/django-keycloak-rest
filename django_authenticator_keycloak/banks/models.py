@@ -1,4 +1,6 @@
+"""Modelos do Django"""
 from django.db import models
+
 
 class Banks(models.Model):
     ispb = models.CharField(max_length=10, null=True, blank=True)

@@ -1,6 +1,0 @@
-Django
-djangorestframework
-pylint-django
-# dacite
-# oic
-pyjwt

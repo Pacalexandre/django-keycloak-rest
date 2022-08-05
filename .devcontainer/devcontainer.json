@@ -42,7 +42,7 @@
 	//"forwardPorts": [8080, 5432, 8000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": "pip install -r app/requirements.txt && python app/manage.py migrate",
+	"postCreateCommand": "pip install -r django_authenticator_keycloak/requirements.txt && python django_authenticator_keycloak/manage.py migrate",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"

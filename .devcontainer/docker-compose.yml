@@ -40,7 +40,6 @@ services:
         - postgres
         - mailhog
 
-
   app:
     build:
       context: ..
