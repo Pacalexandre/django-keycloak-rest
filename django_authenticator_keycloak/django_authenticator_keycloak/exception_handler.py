@@ -1,5 +1,8 @@
 """ custom exception handlers """
+import logging
 from rest_framework.views import exception_handler
+
+LOGGER = logging.getLogger(__name__)
 
 
 def custom_exception_handler(exc, context):
@@ -21,8 +24,9 @@ def custom_exception_handler(exc, context):
         handler_function = handlers[exception_class]
         handler_function(exc, response, context )
 
-    return response
+    
 
+    return response
 
 def _handle_negociation_error(exc, response):
     response.status_code = exc.status_code

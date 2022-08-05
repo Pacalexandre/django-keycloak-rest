@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import hashlib
+import os
 from uuid import uuid4
 from pathlib import Path
 
@@ -135,10 +136,13 @@ REST_FRAMEWORK = {
 
 
 # Default Configurations access server keycloak
+# informations on Keycloak 
+# Examples ['banks']
+KEYCLOAK_EXECPTIONS_URIS = []
 # https://www.keycloak.org/docs/latest/authorization_services
 KEYCLOAK_CONFIG = {
-    'KEYCLOAK_SERVER_URL': 'http://localhost:8080/auth',
-    'KEYCLOAK_REALM': 'REALM',
-    'KEYCLOAK_CLIENT_ID': 'client-backend',
-    'KEYCLOAK_CLIENT_SECRET_KEY': '41ab4e22-a6f3-4bef-86e3-f2a1c97d6387'
+    'KEYCLOAK_SERVER_URL': os.getenv('KEYCLOAK_SERVER_URL',None),
+    'KEYCLOAK_REALM': os.getenv('KEYCLOAK_REALM',None),
+    'KEYCLOAK_CLIENT_ID': os.getenv('KEYCLOAK_CLIENT_ID',None),
+    'KEYCLOAK_CLIENT_SECRET_KEY': os.getenv('KEYCLOAK_CLIENT_SECRET_KEY',None),
 }
