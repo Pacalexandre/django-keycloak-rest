@@ -80,7 +80,7 @@ pip install pylint-django
 Depois de instalar essa dependencia de desenvolvimento, vá no vscode e inclua essa configuração no settings
 arquivo > preferencias > configurações
 Icone no canto superior direito edit o arquivo 
-![](app/static/vscode-settings.png)
+![](django_authenticator_keycloak/static/vscode-settings.png)
 ```json
 "python.linting.pylintArgs": [
         "--load-plugins=pylint_django"
